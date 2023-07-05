@@ -14,7 +14,7 @@
 <body>
     <!-- HEADER-->
     <section id="header">
-        <a href="index.html">
+        <a href="#">
             <img src="img/Logo BC.png" alt="Logo" width="110" height="110">
         </a>
 
@@ -29,53 +29,46 @@
             </ul>
         </div>
     </section>
-    <section id="page-header-male">
-        <h1>Moda Masculina</h1>
-    </section>
-    <!-- Produtos-->
-    <section id="product1" class="section-p1">
-        <div class="pro-container">
-            <div class="pro" onclick="window.location.href ='camisa1.html'">
-                <img src="img_aula/products/f1.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Camisa Masculina Florida</h5>
-                    <h4>R$ 29,99</h4>
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img class="ProductImage" src="img_aula/products/f2.jpg" width="100%" id="MainImg" alt="MainImg">
+
+            <div class="small-img-group">
+                <div class="small-img-col">
+                    <img src="img_aula/products/f1.jpg" width="100%" class="small-img" alt="">
                 </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
-            </div>
-            <div class="pro" onclick="window.location.href ='camisa2.html'">
-                <img src="img_aula/products/f2.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Camisa Masculina Florida</h5>
-                    <h4>R$ 29,99</h4>
+                <div class="small-img-col">
+                    <img src="img_aula/products/f2.jpg" width="100%" class="small-img" alt="">
                 </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
-            </div>
-            <div class="pro" onclick="window.location.href ='camisa3.html'">
-                <img src="img_aula/products/f3.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Camisa Masculina Florida</h5>
-                    <h4>R$ 29,99</h4>
+                <div class="small-img-col">
+                    <img src="img_aula/products/f3.jpg" width="100%" class="small-img" alt="">
                 </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
-            </div>
-            <div class="pro" onclick="window.location.href ='camisa4.html'">
-                <img src="img_aula/products/f4.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Camisa Masculina Florida</h5>
-                    <h4>R$ 29,99</h4>
+                <div class="small-img-col">
+                    <img src="img_aula/products/f4.jpg" width="100%" class="small-img" alt="">
                 </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
             </div>
-            
-            
+        </div>
+        <div class="single-pro-details">
+            <h6>Casa / Camisa</h6>
+            <h4 class="ProductName">Camisa Masculina Florida</h4>
+            <h2 class="ProductPrice">R$ 29,99</h2>
+            <select class="ProductSize">
+                <option>Tamanho</option>
+                <option>Extra Grande</option>
+                <option>Grande</option>
+                <option>Média</option>
+                <option>Pequena</option>
+            </select>
+            <input class="ProductQuant" type="number" value="1">
+            <button class="normal camisaInfo--addButton">Adicionar ao carrinho</button>
+            <!--  <a ><button class="normal camisaInfo--addButton">Adicionar ao carrinho</button></a> -->
+            <h4>Detalhes do Produto</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ducimus eum non molestiae, quas odio tempore laborum hic sapiente. Explicabo nihil cupiditate debitis impedit iure consequatur aperiam quod laborum voluptatum.</span>
         </div>
     </section>
-    <!-- Este texto foi copiado da Hering-->
+
+
 
     <section id="newsletter" class="section-p1 section-m1">
         <div class="newtext">
@@ -102,6 +95,24 @@
 
         <p>©2023 por Barbante Colorido.</p>
     </footer>
+
+    <script>
+        var MainImg = document.getElementById("MainImg")
+        var smallimg = document.getElementsByClassName("small-img")
+
+        smallimg[0].onclick = function(){
+            MainImg.src = smallimg[0].src
+        }
+        smallimg[1].onclick = function(){
+            MainImg.src = smallimg[1].src
+        }
+        smallimg[2].onclick = function(){
+            MainImg.src = smallimg[2].src
+        }
+        smallimg[3].onclick = function(){
+            MainImg.src = smallimg[3].src
+        }
+    </script>
 
     <script src="camisas.js"></script>
     <script src="script.js"></script>

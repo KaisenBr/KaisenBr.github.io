@@ -84,6 +84,8 @@ for (var i = 0; i < removeCartProductButtons.length; i++) {
 function removeProduct(event) {
     console.log('removendo produto')
     event.target.parentElement.parentElement.parentElement.remove()
+    localStorage['cart'] = document.querySelector(".tbody").innerHTML
+    subtotal()
     console.log('teste')
     //updateTotal()
 }
@@ -119,6 +121,7 @@ subtotal()
 
 function checkout(event){
     if(localStorage['cart']){
+        alert("Obrigado pela confiança! Sua compra deu um total de " + document.getElementsByClassName("finalValue")[0].innerText)
         clearCart()
         subtotal()
     }

@@ -14,66 +14,48 @@
 <body>
     <!-- HEADER-->
     <section id="header">
-        <a href="index.html">
+        <a href="#">
             <img src="img/Logo BC.png" alt="Logo" width="110" height="110">
         </a>
 
         <div>
             <ul id="navbar">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="masculino.html">Masculino</a></li>
-                <li><a class="active" href="feminino.html">Feminino</a></li>
+                <li><a class="active" href="masculino.html">Masculino</a></li>
+                <li><a href="feminino.html">Feminino</a></li>
                 <li><a href="sobrenos.html">Sobre-nós</a></li>
                 <li><a href="contato.html">Contato</a></li>
                 <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
             </ul>
         </div>
     </section>
-    <section id="page-header-female">
-        <h1>Moda Feminina</h1>
-    </section>
-    <!-- Produtos-->
-    <section id="product1" class="section-p1">
-        <div class="pro-container">
-            <div class="pro" onclick="window.location.href ='camisa5.html'">
-                <img src="img_aula/products/f5.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Camisa Feminina Bicolor</h5>
-                    <h4>R$ 29,99</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
-            </div>
-            <div class="pro" onclick="window.location.href ='camisa6.html'">
-                <img src="img_aula/products/f6.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Blusa Cats</h5>
-                    <h4>R$ 34,99</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
-            </div>
-            <div class="pro" onclick="window.location.href ='camisa7.html'">
-                <img src="img_aula/products/f7.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Camisa Social Lisa</h5>
-                    <h4>R$ 39,99</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
-            </div>
-            <div class="pro" onclick="window.location.href ='camisa8.html'">
-                <img src="img_aula/products/f8.jpg" alt="">
-                <div class="des">
-                    <span>Barbante Colorido</span>
-                    <h5>Calça Bege Florida</h5>
-                    <h4>R$ 59,99</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-basket-shopping basket"></i></a>
-            </div>
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img class="ProductImage" src="img_aula/products/f6.jpg" width="100%" id="MainImg" alt="MainImg">
+
+            
+        </div>
+        <div class="single-pro-details">
+            <h6>Casa / Camisa</h6>
+            <h4 class="ProductName">Blusa Cats</h4>
+            <h2 class="ProductPrice">R$ 34,99</h2>
+            <select class="ProductSize">
+                <option>Tamanho</option>
+                <option>Extra Grande</option>
+                <option>Grande</option>
+                <option>Média</option>
+                <option>Pequena</option>
+            </select>
+            <input class="ProductQuant" type="number" value="1">
+            <button class="normal camisaInfo--addButton">Adicionar ao carrinho</button>
+            <!--  <a ><button class="normal camisaInfo--addButton">Adicionar ao carrinho</button></a> -->
+            <h4>Detalhes do Produto</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ducimus eum non molestiae, quas odio tempore laborum hic sapiente. Explicabo nihil cupiditate debitis impedit iure consequatur aperiam quod laborum voluptatum.</span>
         </div>
     </section>
-    <!-- Este texto foi copiado da Hering-->
+
+
 
     <section id="newsletter" class="section-p1 section-m1">
         <div class="newtext">
@@ -100,6 +82,24 @@
 
         <p>©2023 por Barbante Colorido.</p>
     </footer>
+
+    <script>
+        var MainImg = document.getElementById("MainImg")
+        var smallimg = document.getElementsByClassName("small-img")
+
+        smallimg[0].onclick = function(){
+            MainImg.src = smallimg[0].src
+        }
+        smallimg[1].onclick = function(){
+            MainImg.src = smallimg[1].src
+        }
+        smallimg[2].onclick = function(){
+            MainImg.src = smallimg[2].src
+        }
+        smallimg[3].onclick = function(){
+            MainImg.src = smallimg[3].src
+        }
+    </script>
 
     <script src="camisas.js"></script>
     <script src="script.js"></script>
