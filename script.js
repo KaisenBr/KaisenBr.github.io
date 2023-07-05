@@ -127,6 +127,10 @@ function subtotal() {
 subtotal()
 
 function checkout(event) {
+    if(localStorage['login']==''){
+        alert('Ops, você ainda não fez login.')
+        return
+    }
     if (localStorage['cart']) {
         alert("Obrigado pela confiança, " + localStorage['login'] + "! Sua compra deu um total de " + document.getElementsByClassName("finalValue")[0].innerText)
         clearCart()
@@ -163,11 +167,9 @@ function loginButtonLister() {
 }
 
 function login() {
-    console.log(document.getElementsByClassName("logininput")[0].value)
-    console.log(document.getElementsByClassName("senhainput")[0].value)
     if (document.getElementsByClassName("logininput")[0].value != '') {
         if (document.getElementsByClassName("senhainput")[0].value != '') {
-            alert("olá " + document.getElementsByClassName("logininput")[0].value)
+            alert("Olá, " + document.getElementsByClassName("logininput")[0].value)
             localStorage['login'] = document.getElementsByClassName("logininput")[0].value
         }else{
             alert('Senha Inválida')
