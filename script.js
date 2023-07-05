@@ -157,7 +157,7 @@ window.addEventListener('beforeunload', function (event) {
 
 
 function loginButtonLister() {
-    const loginButton = document.getElementsByClassName("login--button")[0]
+    const loginButton = document.getElementsByClassName("login--button")
     loginButton[0].addEventListener("click", login)
 
 }
