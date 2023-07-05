@@ -28,28 +28,49 @@ function addProduct(event) {
     console.log('Adicionando produto')
     const button = event.target
     const productInfos = button.parentElement
+
+
     const productImage = productInfos.parentElement.getElementsByClassName("ProductImage")[0].src
     const productName = productInfos.getElementsByClassName("ProductName")[0].innerText
     const productSize = productInfos.getElementsByClassName("ProductSize")[0].value
     const productQuant = productInfos.getElementsByClassName("ProductQuant")[0].value
-    const productPrice = productInfos.getElementsByClassName("ProductPrice")[0].innerText.replace("R$ ", "").replace(",", ".")
+    const productPrice = productInfos.getElementsByClassName("ProductPrice")[0].innerText//.replace("R$ ", "").replace(",", ".")
 
-
+    console.log(productSize)
+    if(productSize=="Tamanho"){
+        alert("Por favor insira um tamanho válido")
+        return
+    }
     console.log(productImage)
     console.log(productName)
     console.log(productSize)
     console.log(productQuant)
     console.log(productPrice)
 
-    localStorage['cart'] = localStorage['cart'] + `
+    localStorage['cart'] = localStorage['cart'] + 
+    `
     <tr>
     <td><a href="#" class="remove-product-button"><i class="fa-regular fa-circle-xmark"></i></a></td>
+    <td><img src="${productImage}" alt=""></td>
+    <td>${productName}</td>
+    <td class="product--price">${productPrice}</td>
+    <td><input class="ProductQuant" type="number" min="0" value="${productQuant}"></td>
+    <td>${productSize}</td>
+    </tr>
+    `
+
+    /*
+    localStorage['cart'] = localStorage['cart'] + `
+    <tr>
+    <td><a href="#" class="remove-product-button"><i class="${fa-regular fa-circle-xmark}"></i></a></td>
     <td><img src="img_aula/products/f2.jpg" alt=""></td>
     <td>Cartoon Astronaut T-shirts</td>
     <td>R$29,99</td>
     <td><input class="ProductQuant" type="number" value="1"></td>
     <td>R$29,99</td>
     </tr>`
+*/
+
 
     window.location.href = ("carrinho.html")
 }
@@ -73,16 +94,48 @@ for (var i = 0; i < checkoutProductButtons.length; i++) {
     checkoutProductButtons[i].addEventListener("click", checkout)
 }
 
+
+function subtotal(){
+    let total = 0
+    const checkoutProductprice = document.getElementsByClassName("product--price")
+    const checkoutProductquant = document.getElementsByClassName("ProductQuant")
+    for (var i = 0; i < checkoutProductprice.length; i++) {
+        console.log(checkoutProductprice[i])
+        console.log(checkoutProductquant[i])
+        console.log(checkoutProductprice[i].innerText)
+        total += checkoutProductprice[i].innerText.replace("R$ ", "").replace(",", ".") * checkoutProductquant[i].value
+
+    }
+    console.log(total)
+
+    const finalprice = document.getElementsByClassName("finalValue")
+    for (var i = 0; i < finalprice.length; i++) {
+        finalprice[i].innerText = total.toFixed(2)
+        finalprice[i].innerText = "R$ " + finalprice[i].innerText.replace(".", ",")
+    }
+}
+
+subtotal()
+
 function checkout(event){
-    console.log('teste')
     if(localStorage['cart']){
-        console.log('teste2')
-        localStorage.removeItem('cart')
-        document.querySelector(".tbody").innerHTML = ''
+        clearCart()
+        subtotal()
+    }
+}
+
+function quantidadeAlterada(){
+    const checkoutQuantInput = document.getElementsByClassName("ProductQuant")
+    for (var i = 0; i < checkoutQuantInput.length; i++) {
+        checkoutQuantInput[i].addEventListener("input", subtotal)
     }
 }
 
 
+function clearCart(){
+    localStorage.removeItem('cart')
+    document.querySelector(".tbody").innerHTML = ''
+}
  
 window.addEventListener('beforeunload', function(event) {
     if (event.clientY < 0) {
@@ -91,3 +144,5 @@ window.addEventListener('beforeunload', function(event) {
       this.localStorage.removeItem['cart'];
     }
   });
+
+quantidadeAlterada()
