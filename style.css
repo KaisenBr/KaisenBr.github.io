@@ -649,3 +649,39 @@ justify-content: space-between;
     padding: 10px;
     font-size: 13px;
 }
+
+#navbar li a.logintitle{
+    font-size: 15px;
+    font-weight: normal;
+}
+
+#form {
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+}
+
+#form h3{
+    font-size: 25px;
+    padding: 10px;
+}
+
+#form div{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+#form div input{
+    font-size: 16px;
+    padding: 10px 20px;
+    outline: none;
+    width: 30%;
+    margin-right: 10px;
+    border: 1px solid #e2e9e1;
+}
+
+#form div button{
+    color: #fff;
+    background-color: #088178;
+}

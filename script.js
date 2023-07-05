@@ -1,6 +1,3 @@
-
-
-console.log('oi')
 if (!localStorage['cart']) {
     localStorage['cart'] = ''
     console.log('carrinho criado' + localStorage['cart'])
@@ -9,6 +6,16 @@ if (!localStorage['cart']) {
 else {
     console.log('carrinho já existe: ', localStorage['cart'])
 }
+
+if (!localStorage['login']) {
+    localStorage['login'] = ''
+    console.log('login criado' + localStorage['login'])
+
+}
+else {
+    console.log('login já existe: ', localStorage['login'])
+}
+
 
 
 // funcoes auxiliares ou uteis
@@ -37,7 +44,7 @@ function addProduct(event) {
     const productPrice = productInfos.getElementsByClassName("ProductPrice")[0].innerText//.replace("R$ ", "").replace(",", ".")
 
     console.log(productSize)
-    if(productSize=="Tamanho"){
+    if (productSize == "Tamanho") {
         alert("Por favor insira um tamanho válido")
         return
     }
@@ -47,8 +54,8 @@ function addProduct(event) {
     console.log(productQuant)
     console.log(productPrice)
 
-    localStorage['cart'] = localStorage['cart'] + 
-    `
+    localStorage['cart'] = localStorage['cart'] +
+        `
     <tr>
     <td><a href="#" class="remove-product-button"><i class="fa-regular fa-circle-xmark"></i></a></td>
     <td><img src="${productImage}" alt=""></td>
@@ -97,7 +104,7 @@ for (var i = 0; i < checkoutProductButtons.length; i++) {
 }
 
 
-function subtotal(){
+function subtotal() {
     let total = 0
     const checkoutProductprice = document.getElementsByClassName("product--price")
     const checkoutProductquant = document.getElementsByClassName("ProductQuant")
@@ -119,15 +126,15 @@ function subtotal(){
 
 subtotal()
 
-function checkout(event){
-    if(localStorage['cart']){
-        alert("Obrigado pela confiança! Sua compra deu um total de " + document.getElementsByClassName("finalValue")[0].innerText)
+function checkout(event) {
+    if (localStorage['cart']) {
+        alert("Obrigado pela confiança, " + localStorage['login'] + "! Sua compra deu um total de " + document.getElementsByClassName("finalValue")[0].innerText)
         clearCart()
         subtotal()
     }
 }
 
-function quantidadeAlterada(){
+function quantidadeAlterada() {
     const checkoutQuantInput = document.getElementsByClassName("ProductQuant")
     for (var i = 0; i < checkoutQuantInput.length; i++) {
         checkoutQuantInput[i].addEventListener("input", subtotal)
@@ -135,17 +142,49 @@ function quantidadeAlterada(){
 }
 
 
-function clearCart(){
+function clearCart() {
     localStorage.removeItem('cart')
     document.querySelector(".tbody").innerHTML = ''
 }
- 
-window.addEventListener('beforeunload', function(event) {
-    if (event.clientY < 0) {
-      // A página está sendo fechada, limpe a LocalStorage aqui
-      console.log('oi')
-      this.localStorage.removeItem['cart'];
-    }
-  });
 
+window.addEventListener('beforeunload', function (event) {
+    if (event.clientY < 0) {
+        // A página está sendo fechada, limpe a LocalStorage aqui
+        console.log('oi')
+        this.localStorage.removeItem['cart'];
+    }
+});
+
+
+function loginButtonLister() {
+    const loginButton = document.getElementsByClassName("login--button")
+    loginButton[0].addEventListener("click", login)
+
+}
+
+function login() {
+    console.log(document.getElementsByClassName("logininput")[0].value)
+    console.log(document.getElementsByClassName("senhainput")[0].value)
+    if (document.getElementsByClassName("logininput")[0].value != '') {
+        if (document.getElementsByClassName("senhainput")[0].value != '') {
+            alert("olá " + document.getElementsByClassName("logininput")[0].value)
+            localStorage['login'] = document.getElementsByClassName("logininput")[0].value
+        }else{
+            alert('Senha Inválida')
+        }
+    }
+}
+
+function loginName() {
+
+    if (localStorage['login']) {
+        if (localStorage['login'] != '') {
+            console.log(localStorage['login'])
+            document.getElementsByClassName("logintitle")[0].innerText = localStorage['login']
+        }
+    }
+}
+
+loginName()
+loginButtonLister()
 quantidadeAlterada()
