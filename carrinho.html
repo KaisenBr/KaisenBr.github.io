@@ -32,7 +32,7 @@
 
 
     <section id="cart" class="section-p1">
-        <table width="100%">
+        <table class="cart-table" width="100%">
             <thead>
                 <tr>
                     <td>Remover</td>
@@ -43,26 +43,22 @@
                     <td>Subtotal</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody">
                 <tr>
-                    <td><a href="#" class="remove-product-button"><i class="fa-regular fa-circle-xmark"></i></a></td>
-                    <td><img src="img_aula/products/f1.jpg" alt=""></td>
-                    <td>Cartoon Astronaut T-shirts</td>
-                    <td>R$29,99</td>
-                    <td><input type="number" value="1"></td>
+
                 </tr>
             </tbody>
         </table>
     </section>
 
-    <section id="cart-add"  class="section-p1">
+    <section id="cart-add" class="section-p1">
         <div id="cupom">
-            <h3>Aplicar Cupom</h3>  
+            <h3>Aplicar Cupom</h3>
             <div>
                 <input type="text" placeholder="Entre com seu cupom">
                 <button class="normal">Aplicar</button>
             </div>
-            
+
 
         </div>
         <div id="subtotal">
@@ -72,6 +68,7 @@
                     <td>Subtotal do Carrinho</td>
                     <td>R$29,99</td>
                 </tr>
+
                 <tr>
                     <td>Envio</td>
                     <td>Grátis</td>
@@ -81,8 +78,8 @@
                     <td><strong>R$39,99</strong></td>
                 </tr>
             </table>
-            <button class="normal">Checkout</button>
-        </div> 
+            <button class="normal checkout--button">Checkout</button>
+        </div>
     </section>
 
 
@@ -100,6 +97,16 @@
 
         <p>©2023 por Barbante Colorido.</p>
     </footer>
+
+    <script>
+        const tableBody = document.querySelector(".tbody")
+        
+        let newCartProduct = document.createElement("tr")
+        newCartProduct.classList.add("cart-product")
+        newCartProduct.innerHTML = localStorage['cart']
+
+        document.querySelector(".tbody").innerHTML = localStorage['cart']
+    </script>
 
     <script src="camisas.js"></script>
     <script src="script.js"></script>
